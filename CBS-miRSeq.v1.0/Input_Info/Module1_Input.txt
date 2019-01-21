@@ -1,0 +1,11 @@
+DIR_REF_GENOME=/home/cbsmirseq/Desktop/Test_dir/TestModule1/SampleGenomeFasta
+SPS=hsa
+INDEX_COLOR=no
+ENS_RELEASE=78
+ENS_AssemblyGRCh=38
+DIR_INPUT_READS=/home/cbsmirseq/Desktop/Test_dir/TestModule1/SampleDataSet
+NumberOfSamples=6
+MIR_ANNOTATION=/home/cbsmirseq/Desktop/Test_dir/TestModule1/Annotations/hsa.miRBase_v21.gff3
+ENS_ANNOTATION=/home/cbsmirseq/Desktop/Test_dir/TestModule1/Annotations/Homo_sapiens.GRCh38.78.Ensembl.gtf
+MY_ADAPTER=ATCTCGTATGCCGTCTTCTGCTTG
+OUTPUT_DIR=/home/cbsmirseq/Desktop/ResultsOfTestData
