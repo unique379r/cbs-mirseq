@@ -302,8 +302,7 @@ $: bash ./CBS-miRSeq.module3b_v1.0.sh
 =================================================================
 ## For any assistance and debugging,
 Please contact:
-bioinforupesh2009.au@gmail.com
-rupesh.kesharwani@jax.org
+bioinforupesh2009.au@gmail.com; rupesh.kesharwani@jax.org
 
 
 date: 21/01/2019
