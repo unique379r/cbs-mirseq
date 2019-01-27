@@ -1,7 +1,7 @@
 Availability and requirements:
 
 Project name: CBS-miRSeq: a robust comprehensive bioinformatics pipeline for microRNA expression profiling by next generation sequencing.
-Project home page: http://www.labmedinfo.org/resources/software/CBS-miRSeq
+Project page: https://bitbucket.org/unique379/cbs-mirseq/overview
 Operating system(s): Linux/Unix.
 Programming language: Bash, Perl and R.
 Other requirements: Fastx (v0.0.14), FastQC (v0.10.1), SOLiD_preprocess_filter_v2.pl, cutadapt (v1.6), Bowtie (≤ v1.0), bfast (v0.6.5a), featureCounts (v1.4.6), samtools (v0.1.18), bedtools (v2.23.0), miRspring (v1.2), miRDeep2 (v2.0.05), RNAhybrid (v2.1.1), miRanda (v3.3a), bioconductor packages (> v3).
@@ -12,7 +12,7 @@ Email: bioinforupesh2009.au@gmail.com; rupesh.kesharwani@jax.org
 
 Current Affiliation
 The Jackson Laborstory of Genomic Medicine
-10 discovery Dr.
+10 discovery Drive
 Farmington, CT 06032
 
 Previous Affiliation
@@ -34,14 +34,14 @@ Installation
 =================================================================
 No installation is required, however pipeline requires prerequisite third party softwares that need to be installed first. However, The simplest way to install CBS-miRSeq on your machine is to download virtual machine image (https://drive.google.com/file/d/0ByG63sGTZ4JTSEVOSlhOVlE1UGs/view?usp=sharing).
 
-Note: For more detail please refer to the CBS-miRSeq manual (https://drive.google.com/file/d/0ByG63sGTZ4JTd04zRXgyem1Ddmc/view?usp=sharing)
+Note: For more detail please refer to the CBS-miRSeq source code and manual (https://bitbucket.org/unique379/cbs-mirseq/overview)
 
-Disclaimer: Its rquested to user that each software/tools used within this pipelines, need to be cited propoerly.
+Disclaimer: Its rquested to user that each software/tools used within this pipelines, need to be cited properly.
 
 Quick Installation:
 =================================================================
 1. Run 
-$: sudo bash ./CBS-miRSeq-SystemPackagesInstall.v1.0.sh
+$: sudo bash INSTALL/CBS-miRSeq-SystemPackagesInstall.v1.0.sh
 ## Follow the instructions.
 Description: This Script will allow user to install system dependencies if missing.
 Note1: There is no guarantee that every required dependency will install automatically.
@@ -85,7 +85,7 @@ readline-devel
 zlib-devel
 
 2. Run
-$: bash ./Install.CBS-miRSeq.dependencies.v1.0.sh 
+$: bash INSTALL/Install.CBS-miRSeq.dependencies.v1.0.sh 
 ## and follow the instructions.
 Note: Before to run this script; Make sure you have successfully installed miRDeep2 (v2.0.0.5) along with their dependencies.
 Description: This script aims to install dependencies software and tools required by the CBS-miRSeq pipeline.
@@ -107,7 +107,7 @@ miRanda (v3.3a)
 
 
 3. Run
-$: Rscript ./CBS-miRSeq.Required.Packages.v1.0.R
+$: Rscript INSTALL/CBS-miRSeq.Required.Packages.v1.0.R
 Description: This script aims to install R-biocunductor packages required by the CBS-miRSeq pipeline.
 Note: There is no guarantee that every required package will install automatically.
 R and Bioconductor packages:
