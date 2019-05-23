@@ -39,8 +39,37 @@ Note: For more detail please refer to the CBS-miRSeq source code and manual (htt
 Disclaimer: Its rquested to user that each software/tools used within this pipelines, need to be cited properly.
 
 Quick Installation:
+
+##############################################
+Building a image from a source of Dockerfile
+##############################################
+
+git clone https://bitbucket.org/unique379/cbs-mirseq.git
+cd cbs-mirseq
+docker build . -t cbs-mirseq:v1.0
+There should now be a Docker image named cbs-mirseq:v1.0 on your computer.
+
+Verify the successful installation using the command "docker images", which will list every Docker image stored locally on your machine.
+
+Running Docker images:
+
+docker run -ti cbs-mirseq:v1.0
+
+Now, you need to install required R packages using the follwing commands.
+
+Rscript CBS-miRSeq.v1.0/INSTALL/CBS-miRSeq.Required.PackagesV1.1.0.R
+
+Once its completed, You are all set and ready to use CBS-miRSeq.
+
+bash CBS-miRSeq.v1.0/CBS-miRSeq.module1.sh , which will print the help menu.
+
 =================================================================
-1. Run 
+
+########################
+Start using Source code
+########################
+1. hit
+
 $: sudo bash INSTALL/CBS-miRSeq-SystemPackagesInstall.v1.0.sh
 ## Follow the instructions.
 Description: This Script will allow user to install system dependencies if missing.
@@ -84,7 +113,8 @@ python-matplotlib
 readline-devel
 zlib-devel
 
-2. Run
+2. hit
+
 $: bash INSTALL/Install.CBS-miRSeq.dependencies.v1.0.sh 
 ## and follow the instructions.
 Note: Before to run this script; Make sure you have successfully installed miRDeep2 (v2.0.0.5) along with their dependencies.
@@ -106,8 +136,9 @@ RNAhybrid (v2.1.1)
 miRanda (v3.3a)
 
 
-3. Run
-$: Rscript INSTALL/CBS-miRSeq.Required.Packages.v1.0.R
+3. hit
+
+$: Rscript CBS-miRSeq.v1.0/INSTALL/CBS-miRSeq.Required.PackagesV1.1.0.R
 Description: This script aims to install R-biocunductor packages required by the CBS-miRSeq pipeline.
 Note: There is no guarantee that every required package will install automatically.
 R and Bioconductor packages:
@@ -305,5 +336,5 @@ Please contact:
 bioinforupesh2009.au@gmail.com; rupesh.kesharwani@jax.org
 
 
-date: 21/01/2019
+Last updated date: 22/05/2019
 		##^^^^Thank you for using CBS-miRSeq pipeline^^##
