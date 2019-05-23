@@ -38,11 +38,13 @@ Note: For more detail please refer to the CBS-miRSeq source code and manual (htt
 
 Disclaimer: Its rquested to user that each software/tools used within this pipelines, need to be cited properly.
 
-Quick Installation:
 
-##############################################
+Quick Installation
+=================================================================
+
+
 Building a image from a source of Dockerfile
-##############################################
+=================================================================
 
 git clone https://bitbucket.org/unique379/cbs-mirseq.git
 cd cbs-mirseq
@@ -63,12 +65,10 @@ Once its completed, You are all set and ready to use CBS-miRSeq.
 
 bash CBS-miRSeq.v1.0/CBS-miRSeq.module1.sh , which will print the help menu.
 
+Start using Source code
 =================================================================
 
-########################
-Start using Source code
-########################
-1. hit
+1)
 
 $: sudo bash INSTALL/CBS-miRSeq-SystemPackagesInstall.v1.0.sh
 ## Follow the instructions.
@@ -113,10 +113,10 @@ python-matplotlib
 readline-devel
 zlib-devel
 
-2. hit
+2)
 
 $: bash INSTALL/Install.CBS-miRSeq.dependencies.v1.0.sh 
-## and follow the instructions.
+## follow the instructions.
 Note: Before to run this script; Make sure you have successfully installed miRDeep2 (v2.0.0.5) along with their dependencies.
 Description: This script aims to install dependencies software and tools required by the CBS-miRSeq pipeline.
 Note: There is no guarantee that every required dependency will install automatically.
@@ -136,7 +136,7 @@ RNAhybrid (v2.1.1)
 miRanda (v3.3a)
 
 
-3. hit
+3)
 
 $: Rscript CBS-miRSeq.v1.0/INSTALL/CBS-miRSeq.Required.PackagesV1.1.0.R
 Description: This script aims to install R-biocunductor packages required by the CBS-miRSeq pipeline.
@@ -188,6 +188,7 @@ We can execute the pipeline using test data sample (https://drive.google.com/fil
 a) Make a folder where you want to download required results and annotation
 
 $  mkdir Results
+
 $: mkdir annotation
 
 b) Go to the CBS-miRSeq directory
@@ -196,7 +197,8 @@ $: cd CBS-miRSeq.v1/Utilities
 
 c) Download the required Annotation files using..
 
-$: bash ./CBS-miRSeq.Annotations.Retrieval.v1.0.sh 
+$: bash ./CBS-miRSeq.Annotations.Retrieval.v1.0.sh
+
 ## Follow the instructions
 
 d) 1. Download the 3' UTR from biomart as instructed in the manual
@@ -214,7 +216,9 @@ Then RUN the Modules of the Pipeline:
 Aims of module 1: Download the reference genome; build the index for mapping, Quality control (QC) of the Reads, Trim the 3' adapter, Mapping and Quantification of the features (miRNAs and Ensembl biotypes).
 Note1: No restrictions regarding the reference organism, user may provide any reference genome. However, this module allow researcher to fetch a few model organism's genome such as Human, Mouse, Rat and Zebrafish.
 ################################################################
+
 $: cd..
+
 $: bash ./CBS-miRSeq.module1.sh Input_Info/Module1_Input.txt
 
 ---> ## Wait till its done.
@@ -238,27 +242,26 @@ bowtie-build sps.genome_v86.fa > sps.genome_v86B.fa
 #use to build index for color space reads:
 bowtie-build sps.genome_v86.fa > sps.genome_v86B.fa
 
-# if user got pre-build index from different source, then we recommend to rename it before to use.
+#if user got pre-build index from different source, then we recommend to rename it before to use.
 RENAMING OF INDEX:
 ## for base space reads
 sps.genome_v86B.1.ebwt
 sps.genome_v86B.2.ebwt
 sps.genome_v86B.3.ebwt
 sps.genome_v86B.4.ebwt
-# Reconstruct the genome from index
+#Reconstruct the genome from index
 bowtie-build sps.genome_v86B > sps.genome_v86.fa
 
-## for color space reads
+##for color space reads
 sps.genome_v86C.1.ebwt
 sps.genome_v86C.2.ebwt
 sps.genome_v86C.3.ebwt
 sps.genome_v86C.4.ebwt
 
-# Reconstruct the genome from index
+#Reconstruct the genome from index
 bowtie-build sps.genome_v86C > sps.genome_v86.fa
 
----->> AS SOON AS, GENOME AND INDEX SET, USER CAN RUN the module1b TO PERFROM 
-their ANALYSIS.
+---->> AS SOON AS, GENOME AND INDEX SET, USER CAN RUN the module1b TO PERFROM ANALYSIS.
 
 **************************************************************
 
@@ -288,31 +291,35 @@ Note: Example output will create a number of output directories and output insid
 
 Optionally, you may execute the sub-modules solitary. It is useful when we want to control the output from every analyses step or to start analysis at different steps of the pipeline.
 
-##Follow the instruction by the corresponding module.
+##Follow the instruction
 
 $: cd /Scripts/CBS-miRSeq.v1/
 
 ##########################################################
 Objective1: User wish to download the reference genome or build the bowtie index (In case user has already downloaded) in order to map their short reads.
 ##########################################################
+
 $: bash ./CBS-miRSeq.module1a_v1.0.sh 
 
 
 ##########################################################
 Objective2: User to wish to perform Quality Control (QC) of their reads, clip the 3' adapter and mapping the short reads along with expression counts of the map reads.
 ##########################################################
+
 $: bash ./CBS-miRSeq.module1b_v1.0.sh
 
 
 ###################################################################
 Objective3: User wish to conduct a Diff Expression analysis between their experimental groups and identification of Ensembl biotype in a sample given.
 ###################################################################
+
 $: bash ./CBS-miRSeq.module2a_v1.0.sh
 
 
 ########################################################
 Objective4: User wish to identify iso-miRs in a sample.
 ########################################################
+
 $: bash ./CBS-miRSeq.module2b_v1.0.sh
 
 
@@ -325,6 +332,7 @@ Objective5: User wish to Predict Novel miRNAs in a sample.
 ##########################################################
 Objective6: User wish to predict the Target gene, perform the gene enrichment, network and pathway analysis of their known and novel miRNAs.
 ##########################################################
+
 $: bash ./CBS-miRSeq.module3b_v1.0.sh
 
 
