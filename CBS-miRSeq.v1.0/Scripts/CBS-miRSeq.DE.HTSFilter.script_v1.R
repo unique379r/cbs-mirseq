@@ -106,29 +106,16 @@ log2FC_Cutoff <- as.numeric(arg[16])
 # #################################
 #
 # #load multiple packages by once but first to check if installed ??
-pkgs= c("RColorBrewer","BiocInstaller","edgeR","DESeq2","gplots","VennDiagram","plotrix","ReportingTools","hwriter","lattice","HTSFilter","mixOmics","dplyr", "gridBase", "grid", "gridExtra","reshape2","ggplot2", "reshape", "EDASeq", "wordcloud")
+pkgs= c("RColorBrewer","BiocInstaller","edgeR","DESeq2","gplots","VennDiagram","plotrix","ReportingTools","hwriter","lattice","HTSFilter","mixOmics","dplyr", "gridBase", "grid", "gridExtra","reshape2","ggplot2", "EDASeq", "wordcloud")
 
-# #packages from cran
-
-cranPack=c("RColorBrewer","gplots","VennDiagram","plotrix","hwriter","lattice","mixOmics","dplyr", "gridBase", "grid", "gridExtra","reshape2","ggplot2", "reshape", "wordcloud")
-
-# #Install packages from R (if not already installed)
-inst_bio2 <- cranPack %in% installed.packages()
-if(length(cranPack[!inst_bio2]) > 0)
-{
- suppressWarnings(suppressMessages(lapply(cranPack[!inst_bio2],install.packages, repos="http://cran.r-project.org")))
- #install.packages(pkgs=x,repos="http://cran.r-project.org")
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg) >0)
+    BiocManager::install(new.pkg, update = TRUE, ask = FALSE)
+  sapply(pkg, require, character.only = TRUE)
 }
-## packages from bioconductor
-bioPack=c("BiocInstaller","edgeR","DESeq2","ReportingTools","HTSFilter", "EDASeq")
-# Install bioconductor packages (if not already installed)
-inst_bio <- bioPack %in% installed.packages()
-
-if(length(bioPack[!inst_bio]) > 0)
-{
- source("http://bioconductor.org/biocLite.R") ## connect to biocLit
- suppressWarnings(suppressMessages(lapply(bioPack[!inst_bio], biocLite, dependencies = T,suppressUpdates=T,ask=F,suppressAutoUpdate=T)))
-}
+##load multiple packages by once but first to check if installed ??
+ipak(pkgs)
 
 ## Load packages into session
 cat("#loading packages...\n")
