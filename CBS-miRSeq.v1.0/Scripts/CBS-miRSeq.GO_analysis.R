@@ -72,12 +72,14 @@ qvalueCutoff <- agr[14]
 # ######################################################################
 ##Install annotation packages (if not already installed)
 anno <-c("GO.db", OrgDb)
-annopack <- anno %in% installed.packages()
-if(length(anno[!annopack]) > 0)
-{
-  source("http://bioconductor.org/biocLite.R") ## on-line use
-  suppressWarnings(suppressMessages(lapply(anno[!annopack], biocLite, dependencies = T,suppressUpdates=F,ask=F,suppressAutoUpdate=F)))
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg) >0)
+    BiocManager::install(new.pkg, update = TRUE, ask = FALSE)
+  sapply(pkg, require, character.only = TRUE)
 }
+##load multiple packages by once but first to check if installed ??
+ipak(anno)
 
 annoLoad <- suppressWarnings(suppressMessages(lapply(anno , require,  character.only=T)))
 ## checking if annotation packages are loaded successfully
@@ -89,29 +91,10 @@ if(length(fine2) < length(anno)) # no. of annotation packages to be loaded
   stop("#OR, Given organism is unable to download, please install manually from http://www.bioconductor.org/packages/3.0/data/annotation/ .\n")
 }
 
-# # load multiple packages by once but first to check if installed ??
-pkgs= c("S4Vectors","clusterProfiler","ReactomePA", "GO.db", "biomaRt","DOSE","KEGGprofile","pathview","DO.db")
-pkgs2=c("networkD3", "igraph", "magrittr","stringi","gridExtra","plyr","grid","grDevices")
-# #Install bioconductor packages (if not already installed)
-inst_bio <- pkgs %in% installed.packages()
-if(length(pkgs[!inst_bio]) > 0)
-{
-  source("http://bioconductor.org/biocLite.R") ## on-line use
-  suppressWarnings(suppressMessages(lapply(pkgs[!inst_bio], biocLite, dependencies =  T,suppressUpdates=F,ask=F,suppressAutoUpdate=F)))
-}
-# #Install packages from R (if not already installed)
-inst_bio2 <- pkgs2 %in% installed.packages()
-if(length(pkgs2[!inst_bio2]) > 0)
-{
- suppressWarnings(suppressMessages(lapply(pkgs2[!inst_bio2],install.packages, repos="http://cran.r-project.org")))
-  install.packages(pkgs=x,repos="http://cran.r-project.org")
-}
-
 ## all packages
 FullPack=c("S4Vectors","clusterProfiler","ReactomePA", "GO.db", "biomaRt","DOSE","networkD3", "igraph", "magrittr","stringi","KEGGprofile","pathview","plyr","gridExtra","grid","grDevices")
-## Load packages into session
-cat("loading packages...\n")
-sapply(FullPack, require,  character.only=T)
+
+ipak(FullPack)
 
 loaded_pack=suppressWarnings(suppressMessages(lapply(FullPack, require,  character.only=T)))
 ## checking if all packages are loaded successfully
