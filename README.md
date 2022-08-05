@@ -1,3 +1,6 @@
+# CBS-miRSeq
+![](CBS-miRSeq.Pipeline_v1.0.png)
+
 Availability and requirements:
 
 Project name: CBS-miRSeq: a robust comprehensive bioinformatics pipeline for microRNA expression profiling by next generation sequencing.
